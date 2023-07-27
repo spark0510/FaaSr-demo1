@@ -8,11 +8,11 @@ compute_product <- function(faasr) {
   
   # Download the input files from S3 bucket
   # The bucket is configured in the JSON payload as My_S3_Bucket
-  # In this demo code, all inputs/outputs are in the same S3 folder, named "demo1-data" below
+  # In this demo code, all inputs/outputs are in the same S3 folder, which is also configured by the user
   # The downloaded files are stored in a "local" folder under names input1.csv and input2.csf
   #
-  faasr_get_file(faasr, "My_S3_Bucket", "demo1-data", args$input1, "local", "input1.csv")
-  faasr_get_file(faasr, "My_S3_Bucket", "demo1-data", args$input2, "local", "input2.csv")
+  faasr_get_file(faasr, "My_S3_Bucket", args$folder, args$input1, "local", "input1.csv")
+  faasr_get_file(faasr, "My_S3_Bucket", args$folder, args$input2, "local", "input2.csv")
   
   # This demo function computes output <- input1 * input2 and stores the output back into S3
   # First, read the local inputs, compute the sum, and store the output locally
@@ -24,10 +24,10 @@ compute_product <- function(faasr) {
 
   # Now, upload the output file to the S3 bucket
   #
-  faasr_put_file(faasr, "My_S3_Bucket", "local", "output.csv", "demo1-data", args$output)
+  faasr_put_file(faasr, "My_S3_Bucket", "local", "output.csv", args$folder, args$output)
 
   # Print a log message
   # 
-  log_msg <- paste0('Function compute_product finished; output written to demo1-data/', args$output, ' in bucket S3_A defined in the JSON configuration')
+  log_msg <- paste0('Function compute_product finished; output written to ', args$folder, '/', args$output, ' in My_S3_Bucket defined in the JSON configuration')
   faasr_log(faasr, log_msg)
 }	
