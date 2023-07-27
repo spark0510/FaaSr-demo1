@@ -7,12 +7,12 @@ compute_difference <- function(faasr) {
   args <- faasr_get_user_function_args(faasr)
   
   # Download the input files from S3 bucket
-  # The bucket is configured in the JSON payload as S3_A
+  # The bucket is configured in the JSON payload as My_S3_Bucket
   # In this demo code, all inputs/outputs are in the same S3 folder, named "demo1-data" below
   # The downloaded files are stored in a "local" folder under names input1.csv and input2.csf
   #
-  faasr_get_file(faasr, "S3_A", "demo1-data", args$input1, "local", "input1.csv")
-  faasr_get_file(faasr, "S3_A", "demo1-data", args$input2, "local", "input2.csv")
+  faasr_get_file(faasr, "My_S3_Bucket", "demo1-data", args$input1, "local", "input1.csv")
+  faasr_get_file(faasr, "My_S3_Bucket", "demo1-data", args$input2, "local", "input2.csv")
   
   # This demo function computes output <- input1 - input2 and stores the output back into S3
   # First, read the local inputs, compute the sum, and store the output locally
@@ -24,7 +24,7 @@ compute_difference <- function(faasr) {
 
   # Now, upload the output file to the S3 bucket
   #
-  faasr_put_file(faasr, "S3_A", "local", "output.csv", "demo1-data", args$output)
+  faasr_put_file(faasr, "My_S3_Bucket", "local", "output.csv", "demo1-data", args$output)
 
   # Print a log message
   # 
