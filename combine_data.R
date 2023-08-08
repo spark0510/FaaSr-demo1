@@ -1,4 +1,4 @@
-combine_data <- function(faasr) {
+combine_data <- function(folder, input1, input2, output) {
 
   # retrieve the arguments for this function
   # This function takes two input file names and one output file name as arguments
@@ -24,10 +24,10 @@ combine_data <- function(faasr) {
 
   # Now, upload the output file to the S3 bucket
   #
-  faasr_put_file(faasr, "My_S3_Bucket", "local", "output.csv", args$folder, args$output)
+  faasr_put_file(faasr, "My_S3_Bucket", "local", "output.csv", folder, output)
 
   # Print a log message
   # 
-  log_msg <- paste0('Function combine_data finished; output written to ', args$folder, '/', args$output, ' in My_S3_Bucket defined in the JSON configuration')
+  log_msg <- paste0('Function combine_data finished; output written to ', folder, '/', output, ' in My_S3_Bucket defined in the JSON configuration')
   faasr_log(faasr, log_msg)
 }	
