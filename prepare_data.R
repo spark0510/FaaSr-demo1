@@ -11,6 +11,10 @@ prepare_data <- function(folder, input1, input2, output) {
   # The downloaded files are stored in a "local" folder under names input1.csv and input2.csf
   #
   print(class(faasr))
+  faasr <- fromJSON(faasr)
+  print(faasr$DataStores$My_S3_Bucket$Endpoint)
+  print(faasr$InvocationID)
+  print(faasr$FaaSrLog)
   #print(faasr$FunctionInvoke)
   faasr_get_file(faasr, "My_S3_Bucket", folder, input1, "local", "input1.csv")
   faasr_get_file(faasr, "My_S3_Bucket", folder, input2, "local", "input2.csv")
