@@ -22,8 +22,8 @@ prepare_data <- function(folder, input1, input2, output) {
   # 
   input1 <- read.table("local/input1.csv", sep=",", header=T)
   input2 <- read.table("local/input2.csv", sep=",", header=T)
-  output <- input1 + input2
-  write.table(output, file="local/output.csv", sep=",", row.names=F, col.names=T)
+  output_set <- input1 + input2
+  write.table(output_set, file="local/output.csv", sep=",", row.names=F, col.names=T)
 
   # Now, upload the output file to the S3 bucket
   #
