@@ -9,18 +9,14 @@ prepare_data <- function(folder, input1, input2, output) {
   # The bucket is configured in the JSON payload as My_S3_Bucket
   # In this demo code, all inputs/outputs are in the same S3 folder, which is also configured by the user
   # The downloaded files are stored in a "local" folder under names input1.csv and input2.csf
-  #
-  print(faasr$DataStores$My_S3_Bucket$Endpoint)
-  print(faasr$InvocationID)
-  print(faasr$FaaSrLog)
-  #print(faasr$FunctionInvoke)
-  faasr_get_file(faasra, "My_S3_Bucket", folder, input1, "local", "input1.csv")
+  
+  faasr_get_file(faasr, "My_S3_Bucket", folder, input1, "local", "input1.csv")
   faasr_get_file(faasr, "My_S3_Bucket", folder, input2, "local", "input2.csv")
   
   # This demo function computes output <- input1 + input2 and stores the output back into S3
   # First, read the local inputs, compute the sum, and store the output locally
   # 
-  input1 <- read.table("local/input123.csv", sep=",", header=T)
+  input1 <- read.table("local/input1.csv", sep=",", header=T)
   input2 <- read.table("local/input2.csv", sep=",", header=T)
   output_set <- input1 + input2
   write.table(output_set, file="local/output.csv", sep=",", row.names=F, col.names=T)
