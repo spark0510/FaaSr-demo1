@@ -4,7 +4,6 @@ combine_data <- function(folder, input1, input2, output) {
   # This function takes two input file names and one output file name as arguments
   # these become available as args$input1, args$input2, and args$output
   #
-  args <- faasr_get_user_function_args(faasr)
   
   # Download the input files from S3 bucket
   # The bucket is configured in the JSON payload as My_S3_Bucket
