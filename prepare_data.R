@@ -4,7 +4,9 @@ prepare_data <- function(folder, input1, input2, output) {
   # This function takes two input file names and one output file name as arguments
   # these become available as args$input1, args$input2, and args$output
   #
-  
+  source("faasr_get_file.R")
+  source("faasr_put_file.R")
+  source("faasr_log.R")
   # Download the input files from S3 bucket
   # The bucket is configured in the JSON payload as My_S3_Bucket
   # In this demo code, all inputs/outputs are in the same S3 folder, which is also configured by the user
