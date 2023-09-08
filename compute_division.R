@@ -11,6 +11,10 @@ compute_division <- function(folder, input1, input2, output) {
   # In this demo code, all inputs/outputs are in the same S3 folder, which is also configured by the user
   # The downloaded files are stored in a "local" folder under names input1.csv and input2.csf
   #
+  source("faasr_get_file.R")
+  source("faasr_put_file.R")
+  source("faasr_log.R")
+  
   faasr_get_file("My_S3_Bucket", folder, input1, "local", "input1.csv")
   faasr_get_file("My_S3_Bucket", folder, input2, "local", "input2.csv")
   
